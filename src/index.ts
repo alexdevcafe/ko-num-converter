@@ -1,5 +1,5 @@
-import { Convert } from "./interfaces";
-import { errors, maxNumber } from "./const";
+import { Convert } from './interfaces';
+import { errors, maxNumber } from './const';
 
 class Converter {
   private number: Array<string>;
@@ -8,22 +8,11 @@ class Converter {
     this.number = this.handleInput(num);
   }
 
-  private error = "" as string;
+  private error = '' as string;
 
-  private readonly koNumbers: string[] = [
-    "",
-    "일",
-    "이",
-    "삼",
-    "사",
-    "오",
-    "육",
-    "칠",
-    "팔",
-    "구",
-  ];
-  private readonly smallUnits: string[] = ["", "십", "백", "천"];
-  private readonly bigUnits: string[] = ["", "만", "억", "조"];
+  private readonly koNumbers: string[] = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+  private readonly smallUnits: string[] = ['', '십', '백', '천'];
+  private readonly bigUnits: string[] = ['', '만', '억', '조'];
 
   private output: string[] = [];
   private visitedBigIndex: number[] = [];
@@ -42,11 +31,11 @@ class Converter {
       this.error = errors.maxNumber;
     }
 
-    return num.toString().split("").reverse();
+    return num.toString().split('').reverse();
   }
 
   private stripTemp(curKoNum: string, index: number): string {
-    return index === 0 ? curKoNum : curKoNum === "일" ? "" : curKoNum;
+    return index === 0 ? curKoNum : curKoNum === '일' ? '' : curKoNum;
   }
 
   convert(): Convert {
@@ -55,7 +44,7 @@ class Converter {
         const curKoNum: string = this.koNumbers[Number(curDigit)];
         const smIndex: number = index % 4;
         const bigIndex: number = Math.floor(index / 4);
-        let temp = "";
+        let temp = '';
 
         if (curKoNum) {
           temp = this.stripTemp(curKoNum, index) + this.smallUnits[smIndex];
@@ -69,8 +58,8 @@ class Converter {
       });
     }
     return {
-      result: this.output.join(""),
-      error: this.error,
+      result: this.output.join(''),
+      error: this.error
     };
   }
 }
