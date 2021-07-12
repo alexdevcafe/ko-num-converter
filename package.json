@@ -1,6 +1,6 @@
 {
   "name": "ko-num-converter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Korean Number Converter",
   "author": "Alexander Khant <info@alexdev.cafe>",
   "repository": "https://github.com/alexdevcafe/ko-num-converter",
@@ -9,7 +9,7 @@
     "korean",
     "number",
     "converter",
-    "typescript" 
+    "typescript"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,8 @@
     "test": "jest",
     "clean": "rm -rf dist",
     "build": "yarn clean && tsc -p tsconfig.json",
-    "start": "node dist/index"
+    "start": "node dist/index",
+    "prepublish": "build"
   },
   "devDependencies": {
     "@types/jest": "^26.0.21",
